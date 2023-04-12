@@ -11,7 +11,6 @@ exports.verifyToken = (req, res, next) => {
       message: "Please login first to access this endpoint!",
     });
   }
-  console.log("this is from middleware");
   jwt.verify(token, process.env.SECRET, (err) => {
     if (err) {
       return res.status(401).send({

@@ -2,7 +2,7 @@
 const Product = require("../models/product.model");
 const User = require("../models/user.model");
 const Order = require("../models/order.model");
-const Adress = require("./../models/address.model");
+const Address = require("./../models/address.model");
 const jwt = require("jsonwebtoken");
 
 // Function to create a new order
@@ -25,6 +25,7 @@ exports.createOrder = async (req, res) => {
     // Fetching the product with the given productId
     const product = await Product.findOne({ _id: productId });
     if (!product) {
+      // console.log(productId)
       return res
         .status(404)
         .json({ message: `No Product found for Id ${productId}` });
@@ -38,7 +39,8 @@ exports.createOrder = async (req, res) => {
     }
 
     // Fetching the address with the given addressId
-    const address = await Adress.findOne({ _id: addressId });
+    const address = await Address.findOne({ _id: addressId });
+    // console.log(addressId)
     if (!address) {
       return res
         .status(404)
@@ -57,7 +59,7 @@ exports.createOrder = async (req, res) => {
       id: newOrder._id,
       user: { user },
       product: { product },
-      shippingAddress: { address },
+      shippingAddress: { address:{user:{user}} },
       amount: product.price,
       orderDate: new Date(Date.now()),
     });

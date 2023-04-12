@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 
 const orderSchema= new mongoose.Schema({
-  adressId:{
+  addressId:{
     type :String,
     required:true
   },

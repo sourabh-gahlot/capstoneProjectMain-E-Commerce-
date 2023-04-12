@@ -4,8 +4,8 @@ const addcontroller = require("./../controllers/address.controller");
 const authenticationCheck = require("./../middleware/authentication.check");
 const router = express.Router();
 
-router.post("/signup", authcontroller.signup);
-router.post("/login", authcontroller.login);
+router.post("/users", authcontroller.signup);
+router.post("/auth", authcontroller.login);
 router.post(
   "/adresses",
   authenticationCheck.verifyToken,

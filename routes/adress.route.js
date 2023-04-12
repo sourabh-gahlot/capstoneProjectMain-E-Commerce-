@@ -6,7 +6,7 @@ const authenticationCheck = require("./../middleware/authentication.check");
 const router = express.Router();
 
 router.post(
-  "/adresses",
+  "/addresses",
   authenticationCheck.verifyToken,
   authorizationCheck.checkUser,
   addcontroller.addAdress

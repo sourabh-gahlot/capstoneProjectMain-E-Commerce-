@@ -4,7 +4,7 @@ const authenticationCheck = require("./../middleware/authentication.check");
 const router = express.Router();
 
 router
-  .route("/")
+  .route("/orders")
   .post(authenticationCheck.verifyToken, ordercontroller.createOrder);
 
 module.exports = router;

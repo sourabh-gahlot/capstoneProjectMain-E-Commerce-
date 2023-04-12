@@ -6,16 +6,16 @@ const authorizationCheck = require("./../middleware/authorization.check");
 const router = express.Router();
 
 router
-  .route("/")
+  .route("/products")
   .post(
     authenticationCheck.verifyToken,
     authorizationCheck.checkAdmin,
     productcontroller.saveProduct
   )
   .get(productcontroller.searchProduct);
-router.route("/categories").get(productcontroller.getProductCategories);
+router.route("/products/categories").get(productcontroller.getProductCategories);
 router
-  .route("/:id")
+  .route("/products/:id")
   .get(productcontroller.getProduct)
   .put(
     authenticationCheck.verifyToken,

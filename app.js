@@ -5,14 +5,20 @@ const userRouter = require("./routes/userRoute");
 const addressRouter = require("./routes/adress.route");
 const productRouter = require("./routes/product.route");
 const orderRouter = require("./routes/order.route");
+const morgan = require('morgan');
 const app = express();
 const DB = process.env.DATABASE.replace("<PASSWORD>", process.env.DPASS);
 app.use(express.json());
-app.use("/users", userRouter);
-app.use("/auth", userRouter);
-app.use("/add", addressRouter);
-app.use("/products", productRouter);
-app.use("/orders", orderRouter);
+app.use(morgan('dev'));
+app.use((req, res, next) => {
+  req.requestTime = new Date().toISOString();
+  console.log(req.requestTime);
+  next();
+});
+app.use("/api/v1/Ecm", userRouter);
+app.use("/api/v1/Ecm", addressRouter);
+app.use("/api/v1/Ecm", productRouter);
+app.use("/api/v1/Ecm", orderRouter);
 
 mongoose
   .connect(DB, {

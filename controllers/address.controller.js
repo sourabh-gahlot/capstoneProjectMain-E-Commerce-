@@ -78,7 +78,7 @@ exports.addAdress = async (req, res) => {
     });
   } catch (err) {
     // If there is an error, return an error message
-    res.status(400).json({
+    res.status(500).json({
       message: "fail",
       err: err,
     });

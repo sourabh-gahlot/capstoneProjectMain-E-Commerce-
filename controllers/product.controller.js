@@ -29,7 +29,7 @@ exports.saveProduct = async (req, res) => {
     });
   } catch (err) {
     // Handling error if product creation fails
-    res.status(400).json({
+    res.status(500).json({
       message: "fail",
       err: err,
     });
